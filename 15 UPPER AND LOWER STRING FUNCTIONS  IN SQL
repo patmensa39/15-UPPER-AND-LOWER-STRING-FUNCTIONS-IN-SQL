@@ -1,0 +1,27 @@
+/*15 UPPER AND LOWER STRING FUNCTIONS  IN SQL 
+Created by Patrick Mensah 
+Date Created: 04/11/2023
+Description:  This query shows how to use upper and lower case functions in SQL 
+*/
+
+--Assuming we want to create a mailing list to all the customers in USA
+SELECT 
+    FirstName AS 'First Name',
+    LastName AS 'Last Name',
+    Address AS 'Customer Address',
+    City,
+    State,
+    Postalcode,
+    Country,
+    FirstName || ' '  || LastName || Address || ' ,'  || City || ' '  || State || ' '  || PostalCode || ' '  || Country AS 'Mailing Address',--this line concatenate all lthe fields into one column
+    LENGTH(PostalCode), --this find the lenght of characters and numbers of the zipcode field 
+    SUBSTR(PostalCode,1,5) AS '5 Digit Postal Code',--this extract the first 5 characters or numbers from the Postal code column 
+    UPPER(LastName) AS 'Last Name all Caps', --this convert all the names in the Last Name fileld into upper case letters 
+    LOWER(FirstName) AS 'First Name all Lower Case ' ,  --this convert all the names in the First Name fileld into lower case letters 
+    TRIM(City) AS 'Trimmed City'
+FROM
+    Customer
+WHERE
+    Country = 'USA'
+ORDER BY 
+    FirstName
